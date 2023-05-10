@@ -24,11 +24,11 @@ export const addTodoList = async (req, res) => {
 
 export const updateTodolist = async (req, res) => {
   const { body } = req;
-
+  console.log(body);
   await Todolist.findOneAndUpdate(
     { id: req.params.id },
     {
-      done: req.params.done,
+      done: body.done,
     }
   );
 
