@@ -26,6 +26,8 @@ paths:
                   type: number
                 todo:
                   type: string
+                done:
+                  type: boolean
       responses:
         "200":
           description: todo list created
@@ -41,9 +43,7 @@ paths:
               schema:
                 type: array
                 items:
-                  type: object
-                done:
-                  type: boolean
+                  type: string
   /update:
     put:
       tags:
