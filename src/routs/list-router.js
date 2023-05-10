@@ -11,6 +11,6 @@ const todoListRouter = express.Router();
 todoListRouter.post("/todo/add", addTodoList);
 todoListRouter.get("/todo", getAllTodoList);
 todoListRouter.put("/update", updateTodolist);
-todoListRouter.delete("/remove", deleteTodolist);
+todoListRouter.delete("/delete", deleteTodolist);
 
 export default todoListRouter;
