@@ -44,7 +44,7 @@ paths:
                 type: array
                 items:
                   type: string
-  /update:
+  /update/:id:
     put:
       tags:
         - Todo list

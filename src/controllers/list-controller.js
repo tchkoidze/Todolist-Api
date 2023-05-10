@@ -23,16 +23,20 @@ export const addTodoList = async (req, res) => {
 };
 
 export const updateTodolist = async (req, res) => {
-  const { body } = req;
-  console.log(body);
-  await Todolist.findOneAndUpdate(
-    { id: req.params.id },
-    {
-      done: body.done,
-    }
-  );
+  try {
+    const { body } = req;
 
-  return res.status(200).json({ message: "todo list updated successfully" });
+    await Todolist.findOneAndUpdate(
+      { id: req.params.id },
+      {
+        done: body.done,
+      }
+    );
+    console.log(555);
+    return res.status(200).json({ message: "todo list updated successfully" });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const deleteTodolist = async (req, res) => {
