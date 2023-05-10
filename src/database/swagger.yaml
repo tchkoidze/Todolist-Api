@@ -10,7 +10,7 @@ servers:
   - url: http://localhost:3000/api
     description: local server
 paths:
-  /todo:
+  /todo/add:
     post:
       tags:
         - Todo list
@@ -29,6 +29,7 @@ paths:
       responses:
         "200":
           description: todo list created
+  /todo:
     get:
       tags:
         - Todo list
@@ -43,6 +44,7 @@ paths:
                   type: object
                 done:
                   type: boolean
+  /update:
     put:
       tags:
         - Todo list
@@ -63,6 +65,7 @@ paths:
       responses:
         "200":
           description: todo updated
+  /delete:
     delete:
       parameters:
         - in: path
