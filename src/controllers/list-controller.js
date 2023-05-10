@@ -9,9 +9,10 @@ export const getAllTodoList = async (req, res) => {
 export const addTodoList = async (req, res) => {
   const { body } = req;
 
-  const lastTodo = await Todolist.find().sort({ _id: -1 }).limit(1);
-
-  const id = lastTodo.length > 0 ? lastTodo[0].id + 1 : 1;
+  //const lastTodo = await Todolist.find().sort({ _id: -1 }).limit(1);
+  const { v4: uuidv4 } = require("uuid");
+  const id = uuidv4();
+  //const id = lastTodo.length > 0 ? lastTodo[0].id + 1 : 1;
 
   const newTodoList = {
     id: id,
@@ -20,20 +21,24 @@ export const addTodoList = async (req, res) => {
   };
   await TodoList.create({ ...newTodoList });
 
-  return res.status(200).json({ ...newTodoList });
+  return res.status(201).json({ ...newTodoList });
 };
 
 export const updateTodolist = async (req, res) => {
   const { body } = req;
 
-  await Feedback.findOneAndUpdate(
-    { id: body.id },
+  await Todolist.findOneAndUpdate(
+    { id: req.params.id },
     {
-      done: body.done,
+      done: req.params.done,
     }
   );
 
   return res.status(200).json({ message: "todo list updated successfully" });
 };
 
-//export const deleteTodolist = async (req, res) => {};
+export const deleteTodolist = async (req, res) => {
+  await Todolist.findOneAndDelete({ id: req.params.id });
+
+  return res.status(200).json({ message: "todo list deleted successfully" });
+};

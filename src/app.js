@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import swaggerMiddleware from "./middlewares/swagger-middleware.js";
 import bodyParser from "body-parser";
 import todoListRouter from "./routs/list-router.js";
+import cors from "cors";
 dotenv.config();
 
 connect();
@@ -16,7 +17,7 @@ app.get("/api", (ewq, res) => {
   return res.status(200).json({ message: "app works well!" });
 });
 
-app.use("/api", todoListRouter);
+app.use("/api", cors(), todoListRouter);
 
 app.use("/", ...swaggerMiddleware());
 

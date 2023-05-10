@@ -13,7 +13,7 @@ paths:
   /todo:
     post:
       tags:
-        - Todo List
+        - Todo list
       requestBody:
         description: create todo list
         required: true
@@ -31,7 +31,7 @@ paths:
           description: todo list created
     get:
       tags:
-        - Todo lists
+        - Todo list
       responses:
         "200":
           description: Successfully fetched
@@ -41,3 +41,38 @@ paths:
                 type: array
                 items:
                   type: object
+                done:
+                  type: boolean
+    put:
+      tags:
+        - Todo list
+      requestBody:
+        description: update feedback
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: number
+                todo:
+                  type: string
+                done:
+                  type: boolean
+      responses:
+        "200":
+          description: todo updated
+    delete:
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: number
+            example: 1
+          required: true
+      tags:
+        - Todo list
+      responses:
+        "200":
+          description: feedback deleted
