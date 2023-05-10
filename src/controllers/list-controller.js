@@ -10,17 +10,14 @@ export const getAllTodoList = async (req, res) => {
 export const addTodoList = async (req, res) => {
   const { body } = req;
 
-  //const lastTodo = await Todolist.find().sort({ _id: -1 }).limit(1);
-
   const id = uuidv4();
-  //const id = lastTodo.length > 0 ? lastTodo[0].id + 1 : 1;
 
   const newTodoList = {
     id: id,
     todo: body.todo,
     done: body.done,
   };
-  await TodoList.create({ ...newTodoList });
+  await Todolist.create({ ...newTodoList });
 
   return res.status(201).json({ ...newTodoList });
 };
