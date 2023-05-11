@@ -16,7 +16,7 @@ app.use(cors());
 app.get("/api", (ewq, res) => {
   return res.status(200).json({ message: "app works well!" });
 });
-
+console.log(`"print:" ${todoListRouter.addTodoList}`);
 app.use("/api", cors(), todoListRouter);
 
 app.use("/", ...swaggerMiddleware());

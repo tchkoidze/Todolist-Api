@@ -8,6 +8,7 @@ export const getAllTodoList = async (req, res) => {
 };
 
 export const addTodoList = async (req, res) => {
+  console.log(77);
   const { body } = req;
 
   const id = uuidv4();
@@ -17,14 +18,16 @@ export const addTodoList = async (req, res) => {
     todo: body.todo,
     done: body.done,
   };
+  console.log(999);
   await Todolist.create({ ...newTodoList });
 
   return res.status(201).json({ ...newTodoList });
 };
 
 export const updateTodolist = async (req, res) => {
+  const { body } = req;
   try {
-    const { body } = req;
+    console.log(555);
 
     await Todolist.findOneAndUpdate(
       { id: req.params.id },
@@ -32,7 +35,7 @@ export const updateTodolist = async (req, res) => {
         done: body.done,
       }
     );
-    console.log(555);
+    console.log(89);
     return res.status(200).json({ message: "todo list updated successfully" });
   } catch (error) {
     console.log(error);

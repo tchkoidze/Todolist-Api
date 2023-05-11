@@ -28,6 +28,10 @@ paths:
                   type: string
                 done:
                   type: boolean
+            example:
+              id: 1
+              todo: Dont use nodemon on server
+              done: true
       responses:
         "200":
           description: todo list created
@@ -44,8 +48,15 @@ paths:
                 type: array
                 items:
                   type: string
-  /update/:id:
+  /update/{id}:
     put:
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: number
+            example: 1
+          required: true
       tags:
         - Todo list
       requestBody:
@@ -53,19 +64,19 @@ paths:
         required: true
         content:
           application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: number
-                todo:
-                  type: string
-                done:
-                  type: boolean
+          schema:
+            type: object
+            properties:
+              id:
+                type: number
+              todo:
+                type: string
+              done:
+                type: boolean
       responses:
         "200":
           description: todo updated
-  /delete:
+  /delete/{id}:
     delete:
       parameters:
         - in: path
