@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 
 const todolistSchema = new Schema({
   id: {
-    type: Schema.Types.Number,
+    type: Schema.Types.String,
     required: true,
   },
   todo: {

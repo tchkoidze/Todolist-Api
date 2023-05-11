@@ -15,21 +15,21 @@ paths:
       tags:
         - Todo list
       requestBody:
-        description: create todo list
+        description: Create todo list
         required: true
         content:
           application/json:
             schema:
-              type: object
+              type: "object"
               properties:
                 id:
-                  type: number
+                  type: string
                 todo:
                   type: string
                 done:
                   type: boolean
             example:
-              id: 1
+              id: 1a
               todo: Dont use nodemon on server
               done: true
       responses:
@@ -54,25 +54,25 @@ paths:
         - in: path
           name: id
           schema:
-            type: number
-            example: 1
+            type: string
+            example: 1a
           required: true
       tags:
         - Todo list
       requestBody:
-        description: update feedback
+        description: update todo list
         required: true
         content:
           application/json:
-          schema:
-            type: object
-            properties:
-              id:
-                type: number
-              todo:
-                type: string
-              done:
-                type: boolean
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                todo:
+                  type: string
+                done:
+                  type: boolean
       responses:
         "200":
           description: todo updated
@@ -82,8 +82,8 @@ paths:
         - in: path
           name: id
           schema:
-            type: number
-            example: 1
+            type: string
+            example: 1a
           required: true
       tags:
         - Todo list
